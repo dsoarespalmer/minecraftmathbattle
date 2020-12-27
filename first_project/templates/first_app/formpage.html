@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FORM</title>
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+  </head>
+  <body>
+    <h2>What is {{ num1 }} x {{ num2 }}?</h2>
+    <div class="container">
+      <form method="POST">
+      {{form.as_p}}
+      {% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </div>
+
+    <div class="djangothree">
+      {% if answer %}
+        {% for ans in answer %}
+          {% if ans %}
+            <p>correct!</p>
+          {% else %}
+            <p>try again!</p>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p>Your if statement is not working</p>
+      {% endif %}
+    </div>
+
+  </body>
+</html>
